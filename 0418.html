@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://sususu.su/css/cheat.css">
+    <style>
+        .tr1 {
+            border-collapse: collapse;
+        }
+
+        .bg-red {
+            background-color: #de6969;
+        }
+
+        .bg-yellow {
+            background-color: #cee07c
+        }
+
+        .bg-grey {
+            background-color: #d5d5d5
+        }
+        body {
+            height: 100vh;
+            background-image: url(https://cdn.discordapp.com/attachments/900979701038862356/962300602870800395/among-us-minimal-colorful-space-5k-8k-amoled-7680x4320-4081.png?size=4096);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+    <script>
+        function getBMI(weight, height) {
+            const bmi = weight / (height * height);
+            return bmi
+        }
+        window.onload = function() {
+            const cal = document.getElementById("cal");
+            const cal1 = document.getElementById("cal1");
+            const cal2 = document.getElementById("cal2");
+            cal.onclick = function() {
+                const ch = document.getElementsByName("ch");
+                const en = document.getElementsByName("en");
+                const math = document.getElementsByName("math");
+                const com = document.getElementsByName("com");
+                let sum = document.getElementsByName("sum");
+                let avg = document.getElementsByName("avg");
+                let chavg = document.getElementById("chavg")
+                let enavg = document.getElementById("enavg")
+                let mathavg = document.getElementById("mathavg")
+                let comavg = document.getElementById("comavg")
+                let chValue = new Array()
+                let enValue = new Array()
+                let mathValue = new Array()
+                let comValue = new Array()
+                let sumValue = new Array()
+                let avgValue = new Array()
+                let chV = 0
+                let enV = 0
+                let mathV = 0
+                let comV = 0
+                let chT = 0
+                let enT = 0
+                let mathT = 0
+                let comT = 0
+                for (let i = 0;i < ch.length;i++){
+                    chValue[i] = parseFloat(ch[i].value)
+                    enValue[i] = parseFloat(en[i].value)
+                    mathValue[i] = parseFloat(math[i].value)
+                    comValue[i] = parseFloat(com[i].value)
+                }
+                for (let i = 0;i < ch.length;i++){
+                    sumValue[i] = chValue[i] + enValue[i] + mathValue[i] + comValue[i]
+                    sum[i].innerText = sumValue[i]
+                }
+                for (let i = 0;i < ch.length;i++){
+                    avgValue[i] = sumValue[i] / 4
+                    avg[i].innerText = avgValue[i]
+                }
+                for (let i = 0;i < ch.length;i++){
+                    chT = chT + chValue[i]
+                }
+                chV = parseFloat(chT) / ch.length
+                chavg.innerText = chV
+
+                for (let i = 0;i < ch.length;i++){
+                    enT = enT + enValue[i]
+                }
+                enV = parseFloat(enT) / en.length
+                enavg.innerText = enV
+
+                for (let i = 0;i < ch.length;i++){
+                    mathT = mathT + mathValue[i]
+                }
+                mathV = parseFloat(mathT) / math.length
+                mathavg.innerText = mathV
+
+                for (let i = 0;i < ch.length;i++){
+                    comT = comT + comValue[i]
+                }
+                comV = parseFloat(comT) / com.length
+                comavg.innerText = comV
+            }
+            cal1.onclick = function () {
+                const height = document.getElementById("height")
+                const weight = document.getElementById("weight")
+                const BMI = document.getElementById("BMI")
+                let BMIV = 0
+                BMIV = getBMI(weight.value, height.value)
+                BMI.innerText = BMIV
+            }
+            cal2.onclick = function () {
+                const form = document.getElementById("form")
+                const money = document.getElementsByName("money")
+                const count = document.getElementsByName("count")
+                const yes = document.getElementById("yes")
+                const no = document.getElementById("no")
+                const Total = document.getElementsByName("Total")
+                const TC = document.getElementsByName("TC")
+                const Tmoney = document.getElementById("Tmoney")
+                const Tcount = document.getElementById("Tcount")
+                const discount = document.getElementById("discount")
+                const Cmember = document.getElementById("Cmember")
+                let discountV = 0
+                let TmoneyV = 0
+                let TcountV = 0
+                let moneyV = new Array()
+                let countV = new Array()
+                let TotalV = new Array()
+                for (i = 0; i < money.length; i++) {
+                    moneyV[i] = parseInt(money[i].innerText)
+                    countV[i] = parseInt(count[i].value)
+                    TC[i].innerText = countV[i]
+                }
+                console.log(moneyV)
+                console.log(countV)
+                for (var j = 0; j < form.member.length; j++) {
+                    if (form.member[j].checked) {
+                        if (form.member[j].value == "1"); {
+                            let discountV = 0
+                            let TmoneyV = 0
+                            let TcountV = 0
+                            for (i = 0; i < money.length; i++) {
+                                TotalV[i] = moneyV[i] * countV[i]
+                                TmoneyV += TotalV[i]
+                                TcountV += countV[i]
+                                Total[i].innerText = parseInt(TotalV[i])
+                            }
+                            console.log(TotalV)
+                            console.log(TmoneyV)
+                            console.log(TcountV)
+
+                            discountV = parseFloat(TmoneyV) * 0.8
+                            console.log(discountV)
+                            discount.innerText = discountV
+                            Tcount.innerText = TcountV
+                            Tmoney.innerText = discountV
+                            Cmember.innerText = TmoneyV
+                        }
+                        if (form.member[j].value == "2") {
+                                let discountV = 0
+                                let TmoneyV = 0
+                                let TcountV = 0
+                                for (i = 0; i < money.length; i++) {
+                                    TotalV[i] = moneyV[i] * countV[i]
+                                    TmoneyV += TotalV[i]
+                                    TcountV += countV[i]
+                                    Total[i].innerText = parseInt(TotalV[i])
+                                }
+                                console.log(TotalV)
+                                console.log(TmoneyV)
+                                console.log(TcountV)
+                                discountV = "非會員"
+                                discount.innerText = discountV
+                                Tcount.innerText = TcountV
+                                Tmoney.innerText = TmoneyV
+                                Cmember.innerText = TmoneyV
+                            }
+                        }
+                    }
+                }
+        }
+    </script>
+</head>
+<body class = "mid">
+    <img src="https://media3.giphy.com/media/13CoXDiaCcCoyk/giphy.gif?cid=ecf05e47l4744f2aexsvb75iqaqoayhdu1ufxf3kkq3smefz&rid=giphy.gif&ct=g" alt=""><p>
+    <div class="card mid" style="max-width:900px; background-color: #b396e0">
+    <!--表格-->
+        <table Border = "1" class="mid tr1 " >
+            <caption><h2>計算班級各成績</h2></caption>
+            <tr>
+                <td class="bg-red ">編號</td>
+                <td class="bg-red ">國文</td>
+                <td class="bg-red ">英文</td>
+                <td class="bg-red ">數學</td>
+                <td class="bg-red ">計概</td>
+                <td class="bg-red ">總分</td>
+                <td class="bg-red ">平均</td>
+            </tr>
+        <p>
+            <tr>
+                <td class="bg-yellow ">1&nbsp;</td>
+                <td class="bg-yellow "><input class = "tinput" type = "text" name = "ch" value = "58"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "en" value = "67"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "math" value = "45"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "com" value = "65"></td>
+                <td class="bg-yellow "name = "sum"></td>
+                <td class="bg-yellow "name = "avg"></td>
+            </tr>
+        <p>
+            <tr>
+                <td class="bg-yellow ">2&nbsp;</td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "ch" value = "56"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "en" value = "78"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "math" value = "90"></td>
+                <td class="bg-yellow "><input class = "tinput" type="text" name = "com" value = "77"></td>
+                <td class="bg-yellow "name = "sum"></td>
+                <td class="bg-yellow "name = "avg"></td>
+            </tr>
+        <p>
+            <tr>
+                <td class = "bg-grey">平均</td>
+                <td class = "bg-grey left padX10" id="chavg"></td>
+                <td class = "bg-grey left padX10" id="enavg"></td>
+                <td class = "bg-grey left padX10" id="mathavg"></td>
+                <td class = "bg-grey left padX10" id="comavg"></td>
+                <td class = "bg-grey left padX10" id="stusum"></td>
+                <td class = "bg-grey left padX10" id="stuavg"></td>
+            </tr>
+        </table>
+        <br>
+        <button id = "cal">全部計算</button>
+        <br><br><br>
+    </div>
+        <br><br><br>
+    <!--BMI-->
+    <div class="card mid" style="max-width:450px; background-color: #f3cff1">
+    <caption><h2>計算BMI值</h2></caption>
+        <table class = "mid">
+            <tr>
+            身高:&nbsp;<input type="text" id = "height" value = "1.7"><br>
+            體重:&nbsp;<input type="text" id = "weight" value = "70"><br><br>
+            </tr>
+            您的BMI為:&nbsp;<span id = "BMI"></span>
+        </table>
+        <br><br>
+        <button id = "cal1">計算開始</button>
+        <br><br><br>
+    </div>
+    <br><br><br>
+    <!--點餐-->
+    <div class="card mid" style="max-width:450px; background-color: #94ecc3">
+        <table class="mid">
+            <caption><h2>計算消費金額</h2></caption>
+            <th>
+                <tr>
+                    <td>品項</td>
+                    <td>價格</td>
+                    <td>數量</td>
+                </tr>
+            </th>
+            <tbody>
+                <tr>
+                    <td>奶茶</td>
+                    <td name="money">30</td>
+                    <td><select name="count">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>炸雞</td>
+                    <td name="money">35</td>
+                    <td><select name="count">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>薯條</td>
+                    <td name="money">40</td>
+                    <td><select name="count">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><button id="cal2">計算</button></td>&nbsp;&nbsp;&nbsp;<td><span>
+                            <form id="form"><input type="radio" name="member" id="yes" value="1">會員
+                        </span></td>
+                    <td><span><input type="radio" name="member" id="no" value="2">非會員</span></form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <th>
+                <tr>
+                    <span>親愛的顧客，您點的是</span><br>
+                    <span>奶茶：</span><span>30</span><span>*</span><span name="TC"></span><span>=</span><span
+                        name="Total"></span><br>
+                    <span>炸雞：</span><span>35</span><span>*</span><span name="TC"></span><span>=</span><span
+                        name="Total"></span><br>
+                    <span>薯條：</span><span>40</span><span>*</span><span name="TC"></span><span>=</span><span
+                        name="Total"></span><br>
+                    <span>會員八折:</span><span
+                        id="Cmember"></span><span></span><span>*</span><span>0.8</span><span>=</span><span
+                        id="discount"></span><br>
+                    <span>總計</span><span id="Tcount"></span><span>份，</span><span>共計</span><span id="Tmoney"></span>元
+                </tr>
+            </th>
+        </table>
+    </div>
+</body>
+</html>
